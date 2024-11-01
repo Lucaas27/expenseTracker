@@ -1,3 +1,4 @@
+using System.Data;
 using expenseTracker.App.Interaction;
 using expenseTracker.App.Models;
 
@@ -5,33 +6,47 @@ namespace expenseTracker.App;
 
 public class App
 {
+    private readonly string[] _args;
 
-    public void Run(string[] args)
+    public App(string[] args)
+    {
+        _args = args;
+    }
+
+    private Dictionary<string, string> ParseArgs()
+    {
+        var userInputs = new Dictionary<string, string>();
+
+        if (_args.Length == 0)
+        {
+            ConsoleInteraction.ShowError("No arguments provided.");
+        }
+        else
+        {
+            // Loop through the args array and create a dictionary
+            for (var i = 0; i < _args.Length; i += 2)
+            {
+                var key = GlobalCulture.TextInfo.ToTitleCase(_args[i].Substring(2)); // Remove the "--" prefix and convert to title case
+                var value = _args[i + 1];
+
+                userInputs.Add(key, value);
+            }
+
+        }
+
+        return userInputs;
+    }
+
+    public void Run()
     {
 
-        // foreach (var item in args)
-        // {
-        //     Console.WriteLine(item);
-        // }
+        var userInputs = ParseArgs();
 
-        var headers = args
-                        .Where(arg => arg.StartsWith("--"))
-                        .Select(arg => arg.Substring(2))
-                        .Select(arg => GlobalCulture.TextInfo.ToTitleCase(arg.ToLower()));
 
-        foreach (var item in headers)
+        foreach (var pair in userInputs)
         {
-            Console.WriteLine(item);
+            Console.WriteLine(pair.Key + " : " + pair.Value);
         }
-
-        if (args.Length > 0)
-        {
-            var expense = new Expense("test description", 10.22m);
-            ConsoleInteraction.ShowMessage(expense.ToString());
-            return;
-        }
-
-        ConsoleInteraction.ShowError("Nothing to display. No arguments.");
     }
 
 }
