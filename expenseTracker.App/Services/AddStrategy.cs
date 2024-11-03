@@ -1,13 +1,14 @@
 using expenseTracker.App.Extensions;
 using expenseTracker.App.Interfaces;
 using expenseTracker.App.Models;
+using expenseTracker.DataAccess.Interfaces;
 
 namespace expenseTracker.App.Services;
 
 public class AddStrategy : IArgumentStrategy
 {
 
-    public void Execute(string[] args, IUserInteraction userInteraction)
+    public void Execute(string[] args, IUserInteraction userInteraction, IFileService fileService)
     {
         decimal amountValue = default;
 

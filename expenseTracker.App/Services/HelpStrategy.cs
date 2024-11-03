@@ -1,10 +1,11 @@
 using expenseTracker.App.Interfaces;
+using expenseTracker.DataAccess.Interfaces;
 
 namespace expenseTracker.App.Services;
 
 public class HelpStrategy : IArgumentStrategy
 {
-    public void Execute(string[] args, IUserInteraction userInteraction)
+    public void Execute(string[] args, IUserInteraction userInteraction, IFileService _)
     {
         userInteraction.ShowWarning("Usage: dotnet run --project expenseTracker.App [command] [options]");
         userInteraction.ShowWarning("Commands:");
