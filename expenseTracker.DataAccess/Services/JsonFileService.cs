@@ -14,10 +14,20 @@ public class JsonFileService : IFileService
 
     public List<T> ReadFromFile<T>()
     {
-        throw new NotImplementedException();
+        var path = _fileMetadata.GetFullPath();
+
+        if ((path == null) || !File.Exists(path))
+        {
+            return new List<T>();
+        }
+
+        var json = File.ReadAllText(path);
+
+        return JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
+
     }
 
-    public void SaveToFile<T>(T content)
+    public void SaveToFile<T>(List<T> content)
     {
         var path = _fileMetadata.GetFullPath();
         var json = JsonSerializer.Serialize(content);

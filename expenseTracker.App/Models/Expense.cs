@@ -8,15 +8,14 @@ public class Expense
     public int Id { get; }
     public string Description { get; set; }
     public decimal Amount { get; set; }
-    public string CreatedAt { get; }
+    public string CreatedAt { get; init; }
 
-    public Expense(string description, decimal amount)
+    public Expense(string description, decimal amount, int id)
     {
-        Id = 1;
+        Id = id;
         Description = description;
         Amount = amount;
         CreatedAt = DateTime.Now.ToString("dd-MMM-yyy hh:mm:ss tt");
-
     }
 
     public override string ToString()

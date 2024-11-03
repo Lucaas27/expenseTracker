@@ -1,5 +1,5 @@
 using expenseTracker.App.Interfaces;
-using expenseTracker.DataAccess.Interfaces;
+using expenseTracker.App.Repositories;
 
 namespace expenseTracker.App;
 
@@ -8,15 +8,15 @@ public class App
     private readonly string[] _args;
     private readonly IUserInteraction _userInteraction;
     private readonly Dictionary<string, IArgumentStrategy> _argumentStrategy;
-    private readonly IFileService _fileService;
+    private readonly IExpensesRepository _expensesRepository;
 
 
-    public App(string[] args, IUserInteraction userInteraction, Dictionary<string, IArgumentStrategy> argumentStrategy, IFileService fileService)
+    public App(string[] args, IUserInteraction userInteraction, Dictionary<string, IArgumentStrategy> argumentStrategy, IExpensesRepository expensesRepository)
     {
         _args = args ?? throw new ArgumentNullException(nameof(args));
         _userInteraction = userInteraction ?? throw new ArgumentNullException(nameof(userInteraction));
         _argumentStrategy = argumentStrategy ?? throw new ArgumentNullException(nameof(argumentStrategy));
-        _fileService = fileService ?? throw new ArgumentNullException(nameof(fileService));
+        _expensesRepository = expensesRepository ?? throw new ArgumentNullException(nameof(expensesRepository));
 
     }
 
@@ -32,7 +32,7 @@ public class App
 
         if (_argumentStrategy.ContainsKey(arg))
         {
-            _argumentStrategy[arg].Execute(_args, _userInteraction, _fileService);
+            _argumentStrategy[arg].Execute(_args, _userInteraction, _expensesRepository);
             return;
         }
 

@@ -1,14 +1,14 @@
 using expenseTracker.App.Extensions;
 using expenseTracker.App.Interfaces;
 using expenseTracker.App.Models;
-using expenseTracker.DataAccess.Interfaces;
+using expenseTracker.App.Repositories;
 
 namespace expenseTracker.App.Services;
 
 public class AddStrategy : IArgumentStrategy
 {
 
-    public void Execute(string[] args, IUserInteraction userInteraction, IFileService fileService)
+    public void Execute(string[] args, IUserInteraction userInteraction, IExpensesRepository expensesRepository)
     {
         decimal amountValue = default;
 
@@ -24,9 +24,9 @@ public class AddStrategy : IArgumentStrategy
             return;
         }
 
-        var expense = new Expense(description!, amountValue);
+        var expense = new Expense(description!, amountValue, expensesRepository.GetNextId());
 
-        fileService.SaveToFile(expense);
+        expensesRepository.SaveExpenseToFile(expense);
 
         userInteraction.ShowMessage($"Expense added successfully (ID: {expense.Id})");
 

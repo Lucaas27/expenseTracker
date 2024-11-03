@@ -4,12 +4,14 @@ using expenseTracker.DataAccess.Services;
 using expenseTracker.App.Factories;
 using expenseTracker.App.Interaction;
 using expenseTracker.DataAccess.Enums;
+using expenseTracker.App.Repositories;
 
 var userInteraction = new UserInteraction();
 var filemetadata = new FileMetadata("expenses", FileExtension.Json);
 var fileService = new FileServiceFactory().Create(filemetadata);
+var expensesRepository = new ExpensesRepository(fileService);
 var strategies = new ArgumentStrategyFactory().Create();
-var app = new App(args, userInteraction, strategies, fileService);
+var app = new App(args, userInteraction, strategies, expensesRepository);
 
 
 try

@@ -1,11 +1,11 @@
 using expenseTracker.App.Interfaces;
-using expenseTracker.DataAccess.Interfaces;
+using expenseTracker.App.Repositories;
 
 namespace expenseTracker.App.Services;
 
 public class DeleteStrategy : IArgumentStrategy
 {
-    public void Execute(string[] args, IUserInteraction userInteraction, IFileService fileService)
+    public void Execute(string[] args, IUserInteraction userInteraction, IExpensesRepository expensesRepository)
     {
         Console.WriteLine("NotImplementedException");
     }
