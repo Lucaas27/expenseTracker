@@ -1,5 +1,5 @@
 
-using expenseTracker.App.Interaction;
+using expenseTracker.CLI.Interaction;
 
 namespace expenseTracker.App.Models;
 
@@ -20,6 +20,6 @@ public class Expense
 
     public override string ToString()
     {
-        return $"Id: {Id} | Description: {Description} | Amount: {Amount.ToString("C", GlobalCulture.CultureInfo)} | CreatedAt: {CreatedAt}";
+        return $"Id: {Id}\t\tDescription: {Description}\t\tAmount: {Amount.ToString("C", GlobalCulture.CultureInfo)}\t\tCreatedAt: {CreatedAt}\t\t";
     }
 }

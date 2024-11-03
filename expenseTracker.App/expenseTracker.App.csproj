@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\expenseTracker.DataAccess\expenseTracker.DataAccess.csproj" />
+    <ProjectReference Include="..\expenseTracker.CLI\expenseTracker.CLI.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

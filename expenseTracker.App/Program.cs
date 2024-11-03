@@ -2,9 +2,9 @@
 using expenseTracker.DataAccess.Factories;
 using expenseTracker.DataAccess.Services;
 using expenseTracker.App.Factories;
-using expenseTracker.App.Interaction;
 using expenseTracker.DataAccess.Enums;
 using expenseTracker.App.Repositories;
+using expenseTracker.CLI.Interaction;
 
 var userInteraction = new UserInteraction();
 var filemetadata = new FileMetadata("expenses", FileExtension.Json);

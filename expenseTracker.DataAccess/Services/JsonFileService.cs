@@ -23,7 +23,15 @@ public class JsonFileService : IFileService
 
         var json = File.ReadAllText(path);
 
-        return JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
+        try
+        {
+            return JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
+
+        }
+        catch (Exception)
+        {
+            return new List<T>();
+        }
 
     }
 

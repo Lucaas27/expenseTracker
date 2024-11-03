@@ -1,7 +1,7 @@
 using expenseTracker.App.Extensions;
 using expenseTracker.App.Interfaces;
 using expenseTracker.App.Models;
-using expenseTracker.App.Repositories;
+using expenseTracker.CLI.Interfaces;
 
 namespace expenseTracker.App.Services;
 

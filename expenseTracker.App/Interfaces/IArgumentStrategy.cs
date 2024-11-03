@@ -1,4 +1,4 @@
-using expenseTracker.App.Repositories;
+using expenseTracker.CLI.Interfaces;
 
 namespace expenseTracker.App.Interfaces;
 

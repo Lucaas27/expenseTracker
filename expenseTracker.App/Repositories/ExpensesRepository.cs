@@ -1,3 +1,4 @@
+using expenseTracker.App.Interfaces;
 using expenseTracker.App.Models;
 using expenseTracker.DataAccess.Interfaces;
 
@@ -36,18 +37,18 @@ public class ExpensesRepository : IExpensesRepository
 
     }
 
-    public List<Expense> ReadExpenseFromFile()
+    public List<Expense> ReadExpensesFromFile()
     {
         var expenses = _fileService.ReadFromFile<Expense>();
+
+        // If there are expenses in the file, update the list
+        if (expenses.Count > 0)
+        {
+            _expenses.Clear();
+            _expenses.AddRange(expenses);
+        }
 
         return expenses;
     }
 
-}
-
-public interface IExpensesRepository
-{
-    int GetNextId();
-    void SaveExpenseToFile(Expense content);
-    List<Expense> ReadExpenseFromFile();
 }

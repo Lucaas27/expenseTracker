@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace expenseTracker.App.Interaction;
+namespace expenseTracker.CLI.Interaction;
 
 public static class GlobalCulture
 {
