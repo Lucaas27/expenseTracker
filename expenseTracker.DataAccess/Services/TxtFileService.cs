@@ -16,7 +16,7 @@ public class TxtFileService : IFileService
         throw new NotImplementedException();
     }
 
-    public string SaveToFile<T>(List<T> content)
+    public void SaveToFile<T>(T content)
     {
         throw new NotImplementedException();
     }

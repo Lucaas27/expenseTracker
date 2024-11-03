@@ -1,3 +1,4 @@
+using System.Text.Json;
 using expenseTracker.DataAccess.Interfaces;
 
 namespace expenseTracker.DataAccess.Services;
@@ -16,8 +17,11 @@ public class JsonFileService : IFileService
         throw new NotImplementedException();
     }
 
-    public string SaveToFile<T>(List<T> content)
+    public void SaveToFile<T>(T content)
     {
-        throw new NotImplementedException();
+        var path = _fileMetadata.GetFullPath();
+        var json = JsonSerializer.Serialize(content);
+
+        File.WriteAllText(path, json);
     }
 }

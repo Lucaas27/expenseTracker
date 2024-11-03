@@ -20,9 +20,6 @@ public class App
 
     }
 
-
-
-
     public void Run()
     {
         if (_args.Length == 0)

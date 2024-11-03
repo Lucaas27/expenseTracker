@@ -26,7 +26,9 @@ public class AddStrategy : IArgumentStrategy
 
         var expense = new Expense(description!, amountValue);
 
-        userInteraction.ShowMessage(expense.ToString());
+        fileService.SaveToFile(expense);
+
+        userInteraction.ShowMessage($"Expense added successfully (ID: {expense.Id})");
 
     }
 }

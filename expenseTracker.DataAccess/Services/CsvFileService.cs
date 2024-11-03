@@ -15,7 +15,7 @@ public class CsvFileService : IFileService
         throw new NotImplementedException();
     }
 
-    public string SaveToFile<T>(List<T> content)
+    public void SaveToFile<T>(T content)
     {
         throw new NotImplementedException();
     }

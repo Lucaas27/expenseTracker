@@ -2,7 +2,7 @@ namespace expenseTracker.DataAccess.Interfaces;
 
 public interface IFileService
 {
-    string SaveToFile<T>(List<T> content);
+    void SaveToFile<T>(T content);
     List<T> ReadFromFile<T>();
 
 }
