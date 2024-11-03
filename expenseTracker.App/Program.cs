@@ -18,10 +18,6 @@ try
 {
     app.Run();
 }
-catch (ArgumentException ex)
-{
-    userInteraction.ShowError("Invalid argument: " + ex.Message);
-}
 catch (Exception ex)
 {
     userInteraction.ShowError(ex.Message);

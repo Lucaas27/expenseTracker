@@ -15,6 +15,20 @@ public class ExpensesRepository : IExpensesRepository
         _expenses = _fileService.ReadFromFile<Expense>();
     }
 
+    public Expense GetExpenseById(int id)
+    {
+        return _expenses.Find(e => e.Id == id) ?? throw new InvalidOperationException($"No expense found with the ID: {id}");
+    }
+
+    public void DeleteExpenseFromFile(int id)
+    {
+        ArgumentNullException.ThrowIfNull(id);
+        var expense = _expenses.Find(e => e.Id == id) ?? throw new InvalidOperationException($"The expense with ID {id} does not exist.");
+
+        _expenses.Remove(expense);
+        _fileService.SaveToFile(_expenses);
+    }
+
     public int GetNextId()
     {
         return _expenses.Count > 0 ? _expenses.Max(e => e.Id) + 1 : 1;
@@ -22,10 +36,7 @@ public class ExpensesRepository : IExpensesRepository
 
     public void SaveExpenseToFile(Expense content)
     {
-        if (content == null)
-        {
-            throw new ArgumentNullException(nameof(content));
-        }
+        ArgumentNullException.ThrowIfNull(content);
 
         if (_expenses.Find(e => e.Id == content.Id) != null)
         {
@@ -41,14 +52,12 @@ public class ExpensesRepository : IExpensesRepository
     {
         var expenses = _fileService.ReadFromFile<Expense>();
 
-        // If there are expenses in the file, update the list
-        if (expenses.Count > 0)
-        {
-            _expenses.Clear();
-            _expenses.AddRange(expenses);
-        }
-
         return expenses;
     }
 
+    public void DeleteAllExpenses()
+    {
+        _expenses.Clear();
+        _fileService.SaveToFile(_expenses);
+    }
 }

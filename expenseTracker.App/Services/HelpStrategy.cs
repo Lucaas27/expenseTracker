@@ -20,11 +20,13 @@ public class HelpStrategy : IArgumentStrategy
         userInteraction.ShowWarning("\t--amount\t\tAmount of the expense");
         userInteraction.ShowWarning("\t--id\t\t\tId of the expense");
         userInteraction.ShowWarning("\t--month\t\t\tMonth of the expense");
+        userInteraction.ShowWarning("\t--all\t\t\t Used to delete all expenses");
         userInteraction.ShowWarning("Example:");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App add --description \"Coffee\" --amount 2.50");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App update --id 1 --description \"Water\"");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App update --id 1 --amount 2");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App delete --id 1");
+        userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App delete --all");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App summary");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App summary --month 1");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App list");
