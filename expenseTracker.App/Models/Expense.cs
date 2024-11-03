@@ -1,5 +1,4 @@
 
-using System.Globalization;
 using expenseTracker.App.Interaction;
 
 namespace expenseTracker.App.Models;
@@ -22,6 +21,6 @@ public class Expense
 
     public override string ToString()
     {
-        return $"Id: {Id} - Description: {Description} - Amount: {Amount.ToString("C", GlobalCulture.CultureInfo)} - CreatedAt: {CreatedAt}";
+        return $"Id: {Id} | Description: {Description} | Amount: {Amount.ToString("C", GlobalCulture.CultureInfo)} | CreatedAt: {CreatedAt}";
     }
 }
