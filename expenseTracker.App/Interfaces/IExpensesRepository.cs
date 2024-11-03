@@ -5,6 +5,7 @@ namespace expenseTracker.App.Interfaces;
 public interface IExpensesRepository
 {
     Expense GetExpenseById(int id);
+    void UpdateExpense(int id, decimal amount, string description);
     void DeleteExpenseFromFile(int id);
     void DeleteAllExpenses();
     int GetNextId();
