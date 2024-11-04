@@ -1,6 +1,5 @@
 <div align="center" id="top">
 &#xa0;
-
   <!-- <a href="https://expensetracker.netlify.app">Demo</a> -->
 </div>
 
@@ -14,6 +13,7 @@
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/lucaas27/expensetracker?color=56BEB8">
 
 </p>
+<img src="./image.png" alt="Preview Image">
 
 <!-- Status -->
 
