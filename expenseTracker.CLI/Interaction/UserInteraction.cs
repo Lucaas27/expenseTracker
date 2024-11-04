@@ -69,7 +69,10 @@ public class UserInteraction : IUserInteraction
                 // Get the value of the property for the object
                 var value = p.GetValue(obj);
                 // If the value is a decimal, format it as currency else convert it to string or return an empty string if the value is null
-                return value is decimal ? string.Format(GlobalCulture.CultureInfo, "{0:C}", value) : value?.ToString() ?? string.Empty;
+                if (value is decimal decimalValue) return decimalValue.ToString("C", GlobalCulture.CultureInfo);
+                if (value is DateTime dateTimeValue) return dateTimeValue.ToString("dd MMMM yyyy hh:mm:ss tt", GlobalCulture.CultureInfo);
+
+                return value?.ToString() ?? string.Empty;
             })
             .ToArray()
         // Finally, this will give us a collection(IEnumerable) of arrays (string[]), where each array is a row. Each element in the array is a cell.
