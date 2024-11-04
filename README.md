@@ -148,9 +148,9 @@ dotnet run --project expenseTracker.App help
 
 ## :memo: License
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
 
-Made with :heart: by <a href="https://github.com/lucaas27" target="_blank">Lucas Gomes</a>
+Made by <a href="https://github.com/lucaas27" target="_blank">Lucas Gomes</a>
 
 &#xa0;
 
