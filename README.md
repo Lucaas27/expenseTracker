@@ -50,7 +50,7 @@ Project Task URL : https://roadmap.sh/projects/expense-tracker
 :heavy_check_mark: Delete an expense;\
 :heavy_check_mark: Delete all expenses;\
 :heavy_check_mark: List all expenses;\
-:heavy_check_mark: Show a summary of all expenses;
+:heavy_check_mark: Show a summary of all expenses;\
 :heavy_check_mark: Show a summary of expenses in a month;
 
 ## :rocket: Technologies
