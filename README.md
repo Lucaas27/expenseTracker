@@ -154,7 +154,7 @@ dotnet run --project expenseTracker.App export --csv
 dotnet run --project expenseTracker.App export --txt
 ```
 
-1. Show help:
+7. Show help:
 
 ```bash
 dotnet run --project expenseTracker.App help
