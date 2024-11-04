@@ -28,11 +28,11 @@ public class App
             return;
         }
 
-        var arg = _args[0].ToLower();
+        var command = _args[0].ToLower();
 
-        if (_argumentStrategy.ContainsKey(arg))
+        if (_argumentStrategy.ContainsKey(command))
         {
-            _argumentStrategy[arg].Execute(_args, _userInteraction, _expensesRepository);
+            _argumentStrategy[command].Execute(_args, _userInteraction, _expensesRepository);
             return;
         }
 

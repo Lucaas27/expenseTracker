@@ -39,6 +39,8 @@
 
 Expense Tracker is a simple CLI application to manage your expenses. It allows you to add, update, delete, list, and summarize your expenses.
 
+The expenses are stored in a json file by default but can be exported as csv or txt.
+
 It is a challenge from roadmap.sh.
 
 Project Task URL : https://roadmap.sh/projects/expense-tracker
@@ -52,6 +54,7 @@ Project Task URL : https://roadmap.sh/projects/expense-tracker
 :heavy_check_mark: List all expenses;\
 :heavy_check_mark: Show a summary of all expenses;\
 :heavy_check_mark: Show a summary of expenses in a month;
+:heavy_check_mark: Export expenses as a CSV or TXT file;
 
 ## :rocket: Technologies
 
@@ -94,6 +97,7 @@ $ dotnet run --project expenseTracker.App [command] [options]
 `delete`: Delete an expense\
 `list`: List all expenses\
 `summary`: Show a summary of all expenses\
+`export`: Export all expenses to a file\
 `help`: Show help
 
 ### Options
@@ -102,6 +106,7 @@ $ dotnet run --project expenseTracker.App [command] [options]
 `--amount`: Amount of the expense\
 `--id`: ID of the expense\
 `--month`: Month of the expense\
+`--csv | --txt | --json`: Used to specify the format to export expenses to\
 `--all`: Used to delete all expenses
 
 ### Examples
@@ -140,7 +145,16 @@ dotnet run --project expenseTracker.App summary
 dotnet run --project expenseTracker.App summary --month 1
 ```
 
-6. Show help:
+6. Export expenses to a file:
+
+```bash
+dotnet run --project expenseTracker.App export  # It will export expenses to a csv by default
+dotnet run --project expenseTracker.App export --json
+dotnet run --project expenseTracker.App export --csv
+dotnet run --project expenseTracker.App export --txt
+```
+
+1. Show help:
 
 ```bash
 dotnet run --project expenseTracker.App help

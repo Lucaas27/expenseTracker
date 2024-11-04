@@ -22,6 +22,6 @@ public class Expense
 
     public override string ToString()
     {
-        return $"Id: {Id}\t\tDescription: {Description}\t\tAmount: {Amount.ToString("C", GlobalCulture.CultureInfo)}\t\tCreatedAt: {CreatedAt.ToString("dd-MMM-yyy hh:mm:ss tt")}\t\tUpdatedAt: {UpdatedAt.ToString("dd-MMM-yyy hh:mm:ss tt")}\t\t";
+        return $"Id: {Id}| Description: {Description} | Amount: {Amount.ToString("C", GlobalCulture.CultureInfo)} | CreatedAt: {CreatedAt.ToString("dd MMMM yyy hh:mm:ss tt")} | UpdatedAt: {UpdatedAt.ToString("dd MMMM yyy hh:mm:ss tt")}";
     }
 }

@@ -18,6 +18,11 @@ public class TxtFileService : IFileService
 
     public void SaveToFile<T>(List<T> content)
     {
-        throw new NotImplementedException();
+        var fullPath = _fileMetadata.GetFullPath();
+        using var sw = new StreamWriter(fullPath);
+        foreach (var item in content)
+        {
+            sw.WriteLine(item?.ToString());
+        }
     }
 }

@@ -7,7 +7,7 @@ using expenseTracker.App.Repositories;
 using expenseTracker.CLI.Interaction;
 
 var userInteraction = new UserInteraction();
-var filemetadata = new FileMetadata("expenses", FileExtension.Json);
+var filemetadata = new FileMetadata("expenses", FileExtension.json);
 var fileService = new FileServiceFactory().Create(filemetadata);
 var expensesRepository = new ExpensesRepository(fileService);
 var strategies = new ArgumentStrategyFactory().Create();

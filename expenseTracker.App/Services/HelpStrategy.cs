@@ -30,6 +30,10 @@ public class HelpStrategy : IArgumentStrategy
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App summary");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App summary --month 1");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App list");
+        userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App export");
+        userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App export --json");
+        userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App export --txt");
+        userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App export --csv");
         userInteraction.ShowWarning("\tdotnet run --project expenseTracker.App help");
     }
 }

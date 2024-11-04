@@ -10,9 +10,9 @@ public class FileServiceFactory
     {
         return filemetadata.Extension switch
         {
-            FileExtension.Txt => new TxtFileService(filemetadata),
-            FileExtension.Csv => new CsvFileService(filemetadata),
-            FileExtension.Json => new JsonFileService(filemetadata),
+            FileExtension.txt => new TxtFileService(filemetadata),
+            FileExtension.csv => new CsvFileService(filemetadata),
+            FileExtension.json => new JsonFileService(filemetadata),
             _ => throw new NotImplementedException(nameof(filemetadata.Extension))
         };
     }

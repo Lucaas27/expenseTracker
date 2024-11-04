@@ -14,7 +14,8 @@ public class ArgumentStrategyFactory
             { "update", new UpdateStrategy() },
             { "delete", new DeleteStrategy() },
             { "summary", new SummaryStrategy() },
-            { "help", new HelpStrategy() }
+            { "export", new ExportStrategy() },
+            { "help", new HelpStrategy() },
         };
 
     }
