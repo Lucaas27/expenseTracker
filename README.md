@@ -89,19 +89,19 @@ $ dotnet run --project expenseTracker.App [command] [options]
 
 ### Commands
 
-`add`: Add a new expense
-`update`: Update an existing expense
-`delete`: Delete an expense
-`list`: List all expenses
-`summary`: Show a summary of all expenses
+`add`: Add a new expense\
+`update`: Update an existing expense\
+`delete`: Delete an expense\
+`list`: List all expenses\
+`summary`: Show a summary of all expenses\
 `help`: Show help
 
 ### Options
 
-`--description`: Description of the expense
-`--amount`: Amount of the expense
-`--id`: ID of the expense
-`--month`: Month of the expense
+`--description`: Description of the expense\
+`--amount`: Amount of the expense\
+`--id`: ID of the expense\
+`--month`: Month of the expense\
 `--all`: Used to delete all expenses
 
 ### Examples
