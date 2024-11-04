@@ -52,8 +52,10 @@ Project Task URL : https://roadmap.sh/projects/expense-tracker
 :heavy_check_mark: Delete an expense;\
 :heavy_check_mark: Delete all expenses;\
 :heavy_check_mark: List all expenses;\
+:heavy_check_mark: List all expenses in a category;\
 :heavy_check_mark: Show a summary of all expenses;\
 :heavy_check_mark: Show a summary of expenses in a month;\
+:heavy_check_mark: Show a summary of a category;\
 :heavy_check_mark: Export expenses as a CSV or TXT file;
 
 ## :rocket: Technologies
@@ -107,7 +109,8 @@ $ dotnet run --project expenseTracker.App [command] [options]
 `--id`: ID of the expense\
 `--month`: Month of the expense\
 `--csv | --txt | --json`: Used to specify the format to export expenses to\
-`--all`: Used to delete all expenses
+`--all`: Used to delete all expenses\
+`--category`: Used to list and summarize by categories
 
 ### Examples
 
@@ -125,27 +128,29 @@ dotnet run --project expenseTracker.App update --id 1 --amount 2
 dotnet run --project expenseTracker.App update --id 1 --amount 5.50 --description "Lunch"
 ```
 
-1. Delete an expense:
+3. Delete an expense:
 
 ```bash
 dotnet run --project expenseTracker.App delete --id 1
 dotnet run --project expenseTracker.App delete --all
 ```
 
-4. List all expenses:
+4. List expenses:
 
 ```bash
 dotnet run --project expenseTracker.App list
+dotnet run --project expenseTracker.App list --category general
 ```
 
-5. Show a summary of all expenses:
+1. Show a summary:
 
 ```bash
 dotnet run --project expenseTracker.App summary
+dotnet run --project expenseTracker.App summary --category general
 dotnet run --project expenseTracker.App summary --month 1
 ```
 
-6. Export expenses to a file:
+1. Export expenses to a file:
 
 ```bash
 dotnet run --project expenseTracker.App export  # It will export expenses to a csv by default

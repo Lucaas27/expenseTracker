@@ -8,14 +8,16 @@ public class Expense
     public int Id { get; }
     public string Description { get; set; }
     public decimal Amount { get; set; }
+    public string? Category { get; set; }
     public DateTime CreatedAt { get; init; }
     public DateTime UpdatedAt { get; set; }
 
-    public Expense(string description, decimal amount, int id)
+    public Expense(string description, decimal amount, int id, string? category = "General")
     {
         Id = id;
         Description = description;
         Amount = amount;
+        Category = category;
         CreatedAt = DateTime.Now;
         UpdatedAt = CreatedAt;
     }

@@ -10,7 +10,20 @@ public class SummaryStrategy : IArgumentStrategy
     public void Execute(string[] args, IUserInteraction userInteraction, IExpensesRepository expensesRepository)
     {
         var month = args.IsOptionValueProvided("--month", out var monthValue) && int.TryParse(monthValue, out int monthInt) ? monthInt : -1;
+
         var allExpenses = expensesRepository.ReadExpensesFromFile();
+
+        var category = args.IsOptionValueProvided("--category", out var categoryValue) && !string.IsNullOrWhiteSpace(categoryValue) ? categoryValue : default;
+
+        if (category != default)
+        {
+            var totalInCategory = allExpenses
+                                        .Where(e => e.Category?.ToLower() == category.ToLower())
+                                        .Sum(e => e.Amount);
+
+            userInteraction.ShowMessage($"Total expenses in category \"{category}\": {string.Format(GlobalCulture.CultureInfo, "{0:C}", totalInCategory)}");
+            return;
+        }
 
         if (allExpenses.Count == 0)
         {
