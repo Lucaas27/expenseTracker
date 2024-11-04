@@ -29,13 +29,13 @@ public class ExpensesRepository : IExpensesRepository
         if (amount != default)
         {
             expense.Amount = amount;
-            expense.UpdatedAt = DateTime.Now.ToString("dd-MMM-yyy hh:mm:ss tt");
+            expense.UpdatedAt = DateTime.Now;
         }
 
         if (description != default)
         {
             expense.Description = description;
-            expense.UpdatedAt = DateTime.Now.ToString("dd-MMM-yyy hh:mm:ss tt");
+            expense.UpdatedAt = DateTime.Now;
         }
 
         _fileService.SaveToFile(_expenses);

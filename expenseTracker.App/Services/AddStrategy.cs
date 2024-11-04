@@ -10,21 +10,26 @@ public class AddStrategy : IArgumentStrategy
 
     public void Execute(string[] args, IUserInteraction userInteraction, IExpensesRepository expensesRepository)
     {
-        decimal amountValue = default;
 
         // Check if the description is provided
-        var isDescriptionValid = args.IsOptionValueProvided("--description", out string? description) && !string.IsNullOrWhiteSpace(description);
+        var description = args.IsOptionValueProvided("--description", out string? descriptionValue) && !string.IsNullOrWhiteSpace(descriptionValue) ? descriptionValue : default;
 
         // Check if the amount is provided
-        var isAmountValid = args.IsOptionValueProvided("--amount", out string? amount) && decimal.TryParse(amount, out amountValue);
+        var amount = args.IsOptionValueProvided("--amount", out string? amountValue) && decimal.TryParse(amountValue, out decimal amountValueParsed) ? amountValueParsed : default;
 
-        if (!isDescriptionValid || !isAmountValid)
+        if (amount < 0)
+        {
+            userInteraction.ShowError("Amount cannot be negative. Try again.");
+            return;
+        }
+
+        if (description == default || amount == default)
         {
             userInteraction.ShowError("The options --description and --amount are mandatory. Please check the arguments and try again with valid values.");
             return;
         }
 
-        var expense = new Expense(description!, amountValue, expensesRepository.GetNextId());
+        var expense = new Expense(description!, amount, expensesRepository.GetNextId());
 
         expensesRepository.SaveExpenseToFile(expense);
 

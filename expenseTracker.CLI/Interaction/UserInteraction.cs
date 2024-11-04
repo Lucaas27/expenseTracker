@@ -53,7 +53,7 @@ public class UserInteraction : IUserInteraction
     {
         if (objects == null || !objects.Any())
         {
-            return "Nothing found to be displayed.";
+            return "There are no records to be displayed.";
         }
 
         // Get the public properties of the type
