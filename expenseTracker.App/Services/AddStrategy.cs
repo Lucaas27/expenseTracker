@@ -14,8 +14,8 @@ public class AddStrategy : IArgumentStrategy
         // Check if the description is provided
         var description = args.IsOptionValueProvided("--description", out string? descriptionValue) && !string.IsNullOrWhiteSpace(descriptionValue) ? descriptionValue : default;
 
-        // Check if the description is provided
-        var category = args.IsOptionValueProvided("--category", out string? categoryValue) && !string.IsNullOrWhiteSpace(categoryValue) ? categoryValue : default;
+        // Check if the description is provided and set the category to General if not provided
+        var category = args.IsOptionValueProvided("--category", out string? categoryValue) && !string.IsNullOrWhiteSpace(categoryValue) ? categoryValue : "General";
 
         // Check if the amount is provided
         var amount = args.IsOptionValueProvided("--amount", out string? amountValue) && decimal.TryParse(amountValue, out decimal amountValueParsed) ? amountValueParsed : default;
