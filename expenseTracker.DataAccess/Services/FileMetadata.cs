@@ -4,12 +4,11 @@ namespace expenseTracker.DataAccess.Services;
 
 public class FileMetadata
 {
-    public string FileName { get; init; }
+    public const string FileName = "expenses";
     public FileExtension Extension { get; init; }
 
-    public FileMetadata(string fileName, FileExtension extension)
+    public FileMetadata(FileExtension extension)
     {
-        FileName = fileName.ToLower();
         Extension = extension;
     }
 

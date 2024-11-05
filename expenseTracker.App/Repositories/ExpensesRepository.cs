@@ -1,6 +1,8 @@
 using expenseTracker.App.Interfaces;
 using expenseTracker.App.Models;
+using expenseTracker.DataAccess.Factories;
 using expenseTracker.DataAccess.Interfaces;
+using expenseTracker.DataAccess.Services;
 
 namespace expenseTracker.App.Repositories;
 
@@ -9,9 +11,9 @@ public class ExpensesRepository : IExpensesRepository
     private readonly IFileService _fileService;
     private readonly List<Expense> _expenses;
 
-    public ExpensesRepository(IFileService fileService)
+    public ExpensesRepository(IFileServiceFactory fileService, FileMetadata fileMetadata)
     {
-        _fileService = fileService;
+        _fileService = fileService.Create(fileMetadata);
         _expenses = _fileService.ReadFromFile<Expense>();
     }
 

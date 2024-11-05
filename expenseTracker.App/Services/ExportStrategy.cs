@@ -24,7 +24,7 @@ public class ExportStrategy : IArgumentStrategy
 
         var format = parsedInput != null ? fileExtension : FileExtension.csv; // Default to CSV if no format is provided
 
-        var fileMetadata = new FileMetadata("expenses", format);
+        var fileMetadata = new FileMetadata(format);
         var fileService = new FileServiceFactory().Create(fileMetadata);
 
         string currentDirectory = Directory.GetCurrentDirectory();

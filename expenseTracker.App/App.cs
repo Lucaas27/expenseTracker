@@ -1,3 +1,4 @@
+using expenseTracker.App.Factories;
 using expenseTracker.App.Interfaces;
 using expenseTracker.CLI.Interfaces;
 
@@ -7,15 +8,15 @@ public class App
 {
     private readonly string[] _args;
     private readonly IUserInteraction _userInteraction;
-    private readonly Dictionary<string, IArgumentStrategy> _argumentStrategy;
+    private readonly IArgumentStrategyFactory _argumentStrategyFactory;
     private readonly IExpensesRepository _expensesRepository;
 
 
-    public App(string[] args, IUserInteraction userInteraction, Dictionary<string, IArgumentStrategy> argumentStrategy, IExpensesRepository expensesRepository)
+    public App(string[] args, IUserInteraction userInteraction, IArgumentStrategyFactory argumentStrategyFactory, IExpensesRepository expensesRepository)
     {
         _args = args ?? throw new ArgumentNullException(nameof(args));
         _userInteraction = userInteraction ?? throw new ArgumentNullException(nameof(userInteraction));
-        _argumentStrategy = argumentStrategy ?? throw new ArgumentNullException(nameof(argumentStrategy));
+        _argumentStrategyFactory = argumentStrategyFactory ?? throw new ArgumentNullException(nameof(argumentStrategyFactory));
         _expensesRepository = expensesRepository ?? throw new ArgumentNullException(nameof(expensesRepository));
 
     }
@@ -30,13 +31,10 @@ public class App
 
         var command = _args[0].ToLower();
 
-        if (_argumentStrategy.ContainsKey(command))
-        {
-            _argumentStrategy[command].Execute(_args, _userInteraction, _expensesRepository);
-            return;
-        }
+        var strategy = _argumentStrategyFactory.Create(command);
 
-        _userInteraction.ShowError("Invalid argument provided, please check the arguments and try again.");
+        strategy.Execute(_args, _userInteraction, _expensesRepository);
+
     }
 
 }

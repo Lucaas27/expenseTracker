@@ -4,7 +4,7 @@ using expenseTracker.DataAccess.Interfaces;
 
 namespace expenseTracker.DataAccess.Factories;
 
-public class FileServiceFactory
+public class FileServiceFactory : IFileServiceFactory
 {
     public IFileService Create(FileMetadata filemetadata)
     {
